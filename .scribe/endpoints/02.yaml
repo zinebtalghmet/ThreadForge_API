@@ -1,0 +1,105 @@
+name: 'Content Generation'
+description: |-
+
+  Submit raw developer notes and monitor their asynchronous transformation
+  into structured X (Twitter) posts.
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/content
+    metadata:
+      custom: []
+      groupName: 'Content Generation'
+      groupDescription: |-
+
+        Submit raw developer notes and monitor their asynchronous transformation
+        into structured X (Twitter) posts.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List raw contents'
+      description: |-
+        Returns the authenticated user's raw contents with their generated post
+        (if any), newest first. Uses eager loading to avoid N+1 queries.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/content/{rawContent_id}'
+    metadata:
+      custom: []
+      groupName: 'Content Generation'
+      groupDescription: |-
+
+        Submit raw developer notes and monitor their asynchronous transformation
+        into structured X (Twitter) posts.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show a raw content'
+      description: |-
+        Returns a single raw content with its generation status and, once ready,
+        the generated post.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      rawContent_id:
+        custom: []
+        name: rawContent_id
+        description: 'The ID of the rawContent.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      rawContent_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data": {"id": 1, "status": "done", "generated_post": {"hook_propose": "..."}}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

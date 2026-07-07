@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CampaignResource extends JsonResource
+class BlueprintResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -22,6 +22,7 @@ class CampaignResource extends JsonResource
         'max_characters'  => $this->max_characters,
         'target_audience' => $this->target_audience,
         'style_rules'     => $this->style_rules,
+        'generated_posts_count' => $this->whenCounted('generatedPosts'),
         'created_at'      => $this->created_at->format('d/m/Y H:i'),
     ];
 
