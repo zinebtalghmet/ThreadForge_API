@@ -1,0 +1,99 @@
+name: 'Ghostwriter Assistant'
+description: |-
+
+  A contextual chat agent (Couche 2) that reworks a generated post. It uses
+  real PHP tools to read the database and remembers the conversation across
+  turns via the SDK persistence tables.
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/posts/{generatedPost_id}/chat'
+    metadata:
+      custom: []
+      groupName: 'Ghostwriter Assistant'
+      groupDescription: |-
+
+        A contextual chat agent (Couche 2) that reworks a generated post. It uses
+        real PHP tools to read the database and remembers the conversation across
+        turns via the SDK persistence tables.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Chat about a generated post'
+      description: |-
+        Sends a natural-language message to the Ghostwriter agent for a given post.
+        Omit conversation_id to start a new conversation; pass the returned
+        conversation_id back on the next request to keep context.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      generatedPost_id:
+        custom: []
+        name: generatedPost_id
+        description: 'The ID of the generatedPost.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      generatedPost:
+        custom: []
+        name: generatedPost
+        description: 'The post to discuss.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      generatedPost_id: 16
+      generatedPost: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      message:
+        custom: []
+        name: message
+        description: "The user's question or instruction."
+        required: true
+        example: 'Donne-moi 3 variantes plus agressives pour le hook.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      conversation_id:
+        custom: []
+        name: conversation_id
+        description: 'The conversation UUID to continue.'
+        required: false
+        example: 9b1c...
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      message: 'Donne-moi 3 variantes plus agressives pour le hook.'
+      conversation_id: 9b1c...
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"reply": "Voici 3 variantes...", "conversation_id": "9b1c..."}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
